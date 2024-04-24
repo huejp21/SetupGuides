@@ -1,0 +1,57 @@
+# Update and Upgrade Packages
+sudo apt update && sudo apt upgrade -y
+
+# Install NVM (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Load NVM on Shell Start
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install Latest Node.js Version
+nvm install node
+
+# Add Git PPA for Latest Git Version
+sudo add-apt-repository ppa:git-core/ppa -y
+sudo apt update
+
+# Install Git
+sudo apt install git -y
+
+# Configure Git User Information and Default Editor
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --global core.editor "code --wait"
+
+# Set React Native Packager Hostname to Your Windows IP (from `ipconfig` in Windows)
+export REACT_NATIVE_PACKAGER_HOSTNAME=<Your-Windows-IP>
+
+# Install Watchman (Optional)
+sudo apt install watchman -y
+
+# Install Yarn (Optional)
+npm install --global yarn
+
+# Set Up Android SDK Environment Variables and Alias in ~/.bashrc
+echo 'export ANDROID_HOME=/mnt/c/Users/{userName}/AppData/Local/Android/Sdk' >> ~/.bashrc
+echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools"' >> ~/.bashrc
+echo 'alias adb="/mnt/c/Users/{userName}/AppData/Local/Android/Sdk/platform-tools/adb.exe"' >> ~/.bashrc
+
+# Apply Changes Made in ~/.bashrc
+source ~/.bashrc
+
+# Instructions to Copy adb.exe to a file named "adb" within the same directory
+# This might be needed if you're facing issues with the 'adb' command in WSL
+
+# Create an Android Emulator in Android Studio on Windows
+
+# Create a New Expo Project or Navigate to an Existing One
+npx create-expo-app {projectName} --template
+cd {projectName}
+
+# Start Expo for Development
+npx expo start
+
+# If there is a connection error with the Android emulator, use tunneling (slower than local)
+npx expo start --tunnel
