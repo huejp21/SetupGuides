@@ -1,0 +1,5 @@
+How to add extra tailwindcss on nextjs project
+
+1. add tailwind.{somename}.config.ts on to root directory.
+2. execute command
+npx tailwindcss --config=tailwind.{somename}.config.ts -i css/src -o css/output --verbose
